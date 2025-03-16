@@ -1,33 +1,16 @@
-asttokens==3.0.0
-backcall==0.2.0
-colorama==0.4.6
-comm==0.2.2
-debugpy==1.8.13
-decorator==5.2.1
-executing==2.2.0
-importlib_metadata==8.5.0
-ipykernel==6.29.5
-ipython==8.12.3
-jedi==0.19.2
-jupyter_client==8.6.3
-jupyter_core==5.7.2
-matplotlib-inline==0.1.7
-nest-asyncio==1.6.0
-packaging==24.2
-parso==0.8.4
-pickleshare==0.7.5
-platformdirs==4.3.6
-prompt_toolkit==3.0.50
-psutil==7.0.0
-pure_eval==0.2.3
-Pygments==2.19.1
-python-dateutil==2.9.0.post0
-pywin32==309
-pyzmq==26.3.0
-six==1.17.0
-stack-data==0.6.3
-tornado==6.4.2
-traitlets==5.14.3
-typing_extensions==4.12.2
-wcwidth==0.2.13
-zipp==3.20.2
+import logging
+import os
+from datetime import datetime
+
+LOG_FILE=f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+logs_path=os.path.join(os.getcwd(),"logs",LOG_FILE)
+os.makedirs(logs_path,exist_ok=True)
+
+LOG_FILE_PATH=os.path.join(logs_path,LOG_FILE)
+
+logging.basicConfig(
+    filename=LOG_FILE_PATH,
+    format="[ %(asctime)s ] %(lineno)d %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO,
+
+)
